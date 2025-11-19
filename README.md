@@ -1,2 +1,2 @@
-# gmtsim
-A Geiger-Müller tube simulator based on Geant4/calzone
+# radlab
+A Geiger-Müller tube and scintillation detector simulator based on Geant4/calzone
