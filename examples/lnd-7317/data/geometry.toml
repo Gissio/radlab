@@ -1,0 +1,32 @@
+[Environment]
+sphere = 200
+
+[Environment.Source]
+box = [5.36, 0.1, 5.36]
+position = [0, -10, 0]
+
+[Environment.Detector]
+cylinder = { length = 1.55, radius = 2.68 }
+position = [ 1.55, 0, 0 ]
+rotation = [ 90, 0, 0 ]
+material = "G4_STAINLESS-STEEL"
+
+[Environment.Detector.EffectiveVolume]
+cylinder = { length = 1.27, radius = 2.225 }
+position = [ 0, 0, 0.14 ]
+material = "FillGas"
+role = "record_deposits"
+
+[Environment.Detector.EffectiveVolume.Window]
+cylinder = { length = 0.01, radius = 2.225 }
+position = [ 0, 0, 0.63 ]
+material = "Mica"
+
+[materials.mixtures.Mica]
+density = 2.883
+composition = { G4_H = 0.005, G4_O = 0.473, G4_F = 0.009, G4_Al = 0.203, G4_Si = 0.211, G4_K = 0.099 }
+
+[materials.mixtures.FillGas]
+density = 8.115e-3
+composition = { G4_Ne = 0.99, G4_Br = 0.01 }
+state = "gas"

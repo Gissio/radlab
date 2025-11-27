@@ -1,0 +1,46 @@
+[Environment]
+sphere = 200
+
+[Environment.Source]
+box = [1.0, 0.1, 0.5]
+position = [0, -10, 0]
+
+[Environment.Detector]
+cylinder = { length = 6.0, radius = 0.5 }
+rotation = [ 0, 90, 0 ]
+
+[Environment.Detector.Body]
+cylinder = { length = 4.5, radius = 0.5 }
+material = "G4_Pyrex_Glass"
+
+[Environment.Detector.Body.Gas]
+cylinder = { length = 4.4, radius = 0.45 }
+material = "FillGas"
+
+[Environment.Detector.Body.Gas.Cathode]
+cylinder = { length = 0.8, radius = 0.15 }
+material = "G4_STAINLESS-STEEL"
+
+[Environment.Detector.Body.Gas.Cathode.EffectiveVolume]
+cylinder = { length = 0.8, radius = 0.1 }
+material = "FillGas"
+role = "record_deposits"
+
+[Environment.Detector.Body.Gas.Cathode.EffectiveVolume.Anode]
+cylinder = { length = 0.8, radius = 0.025 }
+material = "G4_STAINLESS-STEEL"
+
+[Environment.Detector.LeftCap]
+cylinder = { length = 0.75, radius = 0.325 }
+position = [ 0, 0, -2.625 ]
+material = "G4_Pyrex_Glass"
+
+[Environment.Detector.RightCap]
+cylinder = { length = 0.75, radius = 0.325 }
+position = [ 0, 0, 2.625 ]
+material = "G4_Pyrex_Glass"
+
+[materials.mixtures.FillGas]
+density = 2.24e-4
+composition = { G4_Ne = 0.993, G4_Ar = 0.005, G4_Br = 0.002 }
+state = "gas"

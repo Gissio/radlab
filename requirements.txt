@@ -1,0 +1,5 @@
+calzone
+calzone-display
+matplotlib
+numpy
+scipy
