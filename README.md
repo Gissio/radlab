@@ -110,8 +110,9 @@ Rad Lab performs the following steps:
 | ------------------ | ----- | ---------------------- |
 | Cs-137             | γ     | 662 keV                |
 | Co-60              | γ     | 1173 + 1332 keV        |
+| Tc-99m             | γ     | 140 + 142 keV          |
 | I-131              | γ     | Complex spectrum       |
-| K-40               | γ     | 1461 keV               |
+| Lu-177             | γ     | 113 + 208 keV          |
 | Am-241             | γ     | 59 keV                 |
 | Radium             | γ     | Ra-226 chain           |
 | Uranium ore        | γ     | U-235 and U-238 series |
@@ -119,6 +120,7 @@ Rad Lab performs the following steps:
 | Depleted uranium   | γ     | U-238                  |
 | Thorium ore        | γ     | Th-232 series          |
 | X-ray tube (60 kV) | X     | Bremsstrahlung         |
+| K-40               | γ     | 1461 keV               |
 | Natural background | Mixed | Typical environmental  |
 
 ## Adding new radioactive sources
