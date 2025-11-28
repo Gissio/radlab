@@ -28,6 +28,6 @@ cylinder = { length = 3.5, radius = 0.05 }
 material = "G4_STAINLESS-STEEL"
 
 [materials.mixtures.FillGas]
-density = 2.24e-4
+density = 0.224e-3
 composition = { G4_Ne = 0.993, G4_Ar = 0.005, G4_Br = 0.002 }
 state = "gas"

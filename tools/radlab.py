@@ -135,48 +135,16 @@ def simulate_gm_angles(path, n_montecarlo):
 
 # Calculations
 
-def calculate_absorbed_dose_sensitivities(energies, efficiencies, source_area):
-    # Air kerma (ICRP 74)
+def calculate_ambient_dose_equivalent_sensitivities(energies, efficiencies, source_area):
+    # Load ambient dose equivalent per fluence data
 
-    path = Path(__file__).parent / "data" / "icrp74_air_kerma.txt"
-    K_a_data = np.loadtxt(path, skiprows=3, encoding='utf-8').transpose()
-    K_a_energies = K_a_data[0]
-    K_a = K_a_data[1]
-    K_a_cs = CubicSpline(np.log10(K_a_energies), K_a, bc_type='natural')
+    path = Path(__file__).parent / "data" / "icrp74_photons_H10.txt"
+    H10_data = np.loadtxt(path, skiprows=3, encoding='utf-8').transpose()
+    H10_energies = H10_data[0]
+    H_t = H10_data[1]
+    H_t_cs = CubicSpline(np.log10(H10_energies), H_t, bc_type='natural')
 
-    # Calculate absorbed dose sensitivities
-
-    sensitivities = []
-    for index, energy in enumerate(energies):
-        efficiency = efficiencies[index]
-        kerma = K_a_cs(np.log10(1E-3 * energy)).tolist()
-        sensitivity = (60 / 3600 / 1E-6) * source_area * \
-            efficiency / kerma
-        sensitivities.append(sensitivity)
-
-    return sensitivities
-
-
-def calculate_effective_dose_sensitivities(energies, efficiencies, source_area, geometry="AP"):
-    geometry_to_index = {
-        'AP': 1,    # Antero-posterior
-        'PA': 2,    # Postero-anterior
-        'LLAT': 3,  # Left lateral
-        'RLAT': 4,  # Right lateral
-        'ROT': 5,   # Rotational
-        'ISO': 6,   # Isotropic
-    }
-
-    # Load effective dose per fluence data
-
-    path = Path(__file__).parent / "data" / "icrp116_photons.txt"
-    H_t_data = np.loadtxt(path, skiprows=3, encoding='utf-8').transpose()
-    H_t_energies = H_t_data[0]
-    geometry_index = geometry_to_index[geometry]
-    H_t = H_t_data[geometry_index]
-    H_t_cs = CubicSpline(np.log10(H_t_energies), H_t, bc_type='natural')
-
-    # Calculate effective dose sensitivities
+    # Calculate ambient dose equivalent sensitivities
 
     sensitivities = []
     for index, energy in enumerate(energies):
@@ -229,11 +197,14 @@ def calculate_source_sensitivities(energies, dose_sensitivities):
 
 # Plots
 
-def plot_semilogx(title_label, x, y, data_label):
+def plot_semilogx(title_label, x, y, data_label, normalize_cs137=False):
     cs = CubicSpline(np.log10(x), y, bc_type='natural')
 
     cs_x = np.logspace(np.log10(x[0]), np.log10(x[-1]), 500)
     cs_y = cs(np.log10(cs_x))
+
+    if normalize_cs137:
+        cs_y /= cs(np.log10(661.657))
 
     plt.figure()
     plt.semilogx(cs_x, cs_y)
