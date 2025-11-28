@@ -18,7 +18,7 @@ material = "FillGas"
 role = "record_deposits"
 
 [Environment.Detector.EffectiveVolume.Window]
-cylinder = { length = 0.01, radius = 2.225 }
+cylinder = { length = 0.0001, radius = 2.225 }
 position = [ 0, 0, 0.63 ]
 material = "Mica"
 
