@@ -26,7 +26,7 @@ Explore the included notebooks:
 * [HH614 Geiger tube](tubes/hh614/hh614.ipynb)
 * [СБМ20 (SBM20) Geiger tube](tubes/sbm20/sbm20.ipynb)
 * [СИЗБГ (SI3BG) Geiger tube](tubes/si3bg/si3bg.ipynb)
-* [LND-7317 Geiger tube](tubes/lnd-7317/lnd-7317.ipynb)
+* [LND 7317 Geiger tube](tubes/lnd7317/lnd7317.ipynb)
 
 ## Installation
 
