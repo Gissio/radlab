@@ -1,0 +1,70 @@
+[Environment]
+sphere = 20
+
+[Environment.Source]
+box = [5.36, 0.1, 5.36]
+position = [0, -10, 0]
+
+[Environment.Detector]
+cylinder = { length = 1.55, radius = 2.68 }
+position = [ 0, 0.14, 0 ]
+rotation = [ 90, 0, 0 ]
+material = "G4_STAINLESS-STEEL"
+
+[Environment.Detector.EffectiveVolume]
+cylinder = { length = 1.27, radius = 2.225 }
+position = [ 0, 0, 0.14 ]
+material = "FillGas"
+role = [ "record_ingoing", "record_deposits" ]
+
+[Environment.Detector.EffectiveVolume.AnodeOuterRing]
+cylinder = { length = 0.085, radius = 1.515, thickness = 0.085 }
+material = "G4_STAINLESS-STEEL"
+
+[Environment.Detector.EffectiveVolume.AnodeMidRing]
+cylinder = { length = 0.085, radius = 0.885, thickness = 0.085 }
+material = "G4_STAINLESS-STEEL"
+
+[Environment.Detector.EffectiveVolume.AnodeInnerRing]
+cylinder = { length = 0.085, radius = 0.315, thickness = 0.085 }
+material = "G4_STAINLESS-STEEL"
+
+[Environment.Detector.EffectiveVolume.AnodeWire1]
+box = [ 0.54, 0.085, 0.085 ]
+position = [ -1.1575, 0, 0 ]
+material = "G4_STAINLESS-STEEL"
+
+[Environment.Detector.EffectiveVolume.AnodeWire2]
+box = [ 0.48, 0.085, 0.085 ]
+position = [ -0.5575, 0, 0 ]
+material = "G4_STAINLESS-STEEL"
+
+[Environment.Detector.EffectiveVolume.AnodeWire3]
+box = [ 0.48, 0.085, 0.085 ]
+position = [ 0.5575, 0, 0 ]
+material = "G4_STAINLESS-STEEL"
+
+[Environment.Detector.EffectiveVolume.AnodeWire4]
+box = [ 0.54, 0.085, 0.085 ]
+position = [ 1.1575, 0, 0 ]
+material = "G4_STAINLESS-STEEL"
+
+[Environment.Detector.EffectiveVolume.AnodeWire5]
+box = [ 0.705, 0.085, 0.085 ]
+position = [ 1.87, 0, 0 ]
+material = "G4_STAINLESS-STEEL"
+
+[Environment.DetectorWindow]
+cylinder = { length = 0.01, radius = 2.225 }
+position = [ 0, -0.645, 0 ]
+rotation = [ 90, 0, 0 ]
+material = "Mica"
+
+[materials.mixtures.Mica]
+density = 2.883
+composition = { G4_H = 0.005, G4_O = 0.473, G4_F = 0.009, G4_Al = 0.203, G4_Si = 0.211, G4_K = 0.099 }
+
+[materials.mixtures.FillGas]
+density = 0.825e-3
+composition = { G4_Ne = 0.99, G4_Br = 0.01 }
+state = "gas"

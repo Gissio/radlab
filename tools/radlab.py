@@ -16,6 +16,9 @@ from pathlib import Path
 from scipy.interpolate import CubicSpline
 from IPython.display import display, Markdown
 
+# Constants
+
+enable_detailed_deposits = True
 
 # Simulations
 
@@ -34,8 +37,8 @@ def simulate_gm_tube(path, energy, n, pid="gamma", angle=0):
         .build()
 
     simulation = calzone.Simulation(geometry=geometry)
-    simulation.sample_deposits = "detailed"
-    # simulation.physics.em_model = "livermore"
+    if (enable_detailed_deposits):
+        simulation.sample_deposits = "detailed"
 
     source = simulation.geometry.find("Source")
     particles = simulation.particles()  \
@@ -47,24 +50,42 @@ def simulate_gm_tube(path, energy, n, pid="gamma", angle=0):
 
     result = simulation.run(particles)
 
-    # Threshold energy for forming one electron-ion pair for neon gas.
-    # Based on: P.A. Zyla et al., Prog. Theor. Exp. Phys., Particle Data Group, 2020.
-    W_value = 36.4  # eV
-
-    m = 0
-    W_value_MeV = 1E-6 * W_value
-
+    events = set()
+    # Count deposits
     for (layer, deposits) in result.deposits.items():
-        last_event = None
-        for deposit in deposits.line:
-            event = deposit["event"]
-            value = deposit["value"]
+        if enable_detailed_deposits:
+            deposits = deposits.line
+        for deposit in deposits:
+            events.add(deposit["event"])
+    # Count ingoing electrons
+    # for (layer, particles) in result.particles.items():
+    #     for particle in particles:
+    #         if particle["pid"] == 11:
+    #             events.add(particle["event"])
 
-            if value >= W_value_MeV and event != last_event:
-                last_event = event
-                m += 1
+    # Log
+    # with open('out.log', 'wt') as f:
+    #     print('---', file=f)
 
-    return (energy, angle, m)
+    #     if enable_detailed_deposits:
+    #         print('event, tid, pid, energy, value, start, end, weight, random_index', file=f)
+    #     else:
+    #         print('event, value, weight, random_index', file=f)
+    #     for (layer, deposits) in result.deposits.items():
+    #         if enable_detailed_deposits:
+    #             deposits = deposits.line
+
+    #         for deposit in deposits:
+    #             print(deposit, file=f)
+    #     print('event, pid, energy, position, direction, weight, random_index, tid', file=f)
+    #     for (layer, particles) in result.particles.items():
+    #         for particle in particles:
+    #             if particle["pid"] != 22:
+    #                 print(particle, file=f)
+
+    #     print()
+
+    return (energy, angle, len(events))
 
 
 def get_source_area(path):
@@ -197,7 +218,7 @@ def calculate_source_sensitivities(energies, dose_sensitivities):
 
 # Plots
 
-def plot_semilogx(title_label, x, y, data_label, normalize_cs137=False):
+def plot_semilogx(title_label, x, y, data_label, normalize_cs137=False, max=None):
     cs = CubicSpline(np.log10(x), y, bc_type='natural')
 
     cs_x = np.logspace(np.log10(x[0]), np.log10(x[-1]), 500)
@@ -210,6 +231,8 @@ def plot_semilogx(title_label, x, y, data_label, normalize_cs137=False):
     plt.semilogx(cs_x, cs_y)
     plt.xlabel("Energy E (keV)")
     plt.ylabel(data_label)
+    if max != None:
+        plt.ylim((0, max))
     plt.title(f"{title_label}")
     plt.grid(True)
     plt.show()

@@ -7,7 +7,7 @@
 
 ## Overview
 
-**Rad Lab** is a Monte-Carlo simulation toolkit for modeling the performance of **Geiger–Müller tubes** and **scintillation detectors**. Built on top of Geant4 and Calzone, it provides an easy-to-use, reproducible, and extensible environment for detector simulation and design.
+**Rad Lab** is a Monte-Carlo simulation toolkit for modeling the performance of **Geiger–Müller tubes**. Built on top of Geant4 and Calzone, it provides an easy-to-use, reproducible, and extensible environment for detector simulation and design.
 
 With Rad Lab, you can:
 
@@ -21,12 +21,12 @@ With Rad Lab, you can:
 
 Explore the included notebooks:
 
-* [J305 Geiger tube](examples/j305/j305.ipynb)
-* [M4011/J321 Geiger tube](examples/m4011-j321/m4011.ipynb)
-* [HH614 Geiger tube](examples/hh614/hh614.ipynb)
-* [СБМ20 (SBM20) Geiger tube](examples/sbm20/sbm20.ipynb)
-* [СИЗБГ (SI3BG) Geiger tube](examples/si3bg/si3bg.ipynb)
-* [LND-7317 Geiger tube](examples/si3bg/si3bg.ipynb)
+* [J305 Geiger tube](tubes/j305/j305.ipynb)
+* [M4011 Geiger tube](tubes/m4011/m4011.ipynb)
+* [HH614 Geiger tube](tubes/hh614/hh614.ipynb)
+* [СБМ20 (SBM20) Geiger tube](tubes/sbm20/sbm20.ipynb)
+* [СИЗБГ (SI3BG) Geiger tube](tubes/si3bg/si3bg.ipynb)
+* [LND-7317 Geiger tube](tubes/lnd-7317/lnd-7317.ipynb)
 
 ## Installation
 
@@ -71,38 +71,37 @@ For navigation instructions, see the Calzone Interactive Display docs:
 
 Rad Lab performs the following steps:
 
-1. **Load geometry**
+1. **Loads geometry**
 
    A `geometry.toml` file specifies:
 
    * a `Source` box emitting parallel particles toward the detector at the coordinate origin. The source area equals the width × height of this box.
    * an `EffectiveVolume`, inside which freed electrons are counted.
 
-2. **Run Monte-Carlo transport**
+2. **Runs Monte-Carlo transport**
 
    Particle transport is simulated using Calzone/Geant4.
 
-3. **Count ionization electrons**
+3. **Counts ionization electrons**
 
-   Electrons with energies above **36.4 eV** (the W-value for neon) produced in the `EffectiveVolume` are counted.
-   Based on: P.A. Zyla et al., *Prog. Theor. Exp. Phys.*, Particle Data Group, 2020.
+   Electrons entering or produced in the `EffectiveVolume` are counted.
 
-4. **Compute detector efficiency**
+4. **Computes detector efficiency**
 
    Efficiency = detected electrons / incident particles.
 
-5. **Compute dose sensitivities**
+5. **Computes dose sensitivities**
 
    * **Absorbed dose:** using ICRP 74 air-kerma–to-dose data.
    * **Effective dose:** using the ICRP 116 AP (anterior–posterior) geometry.
 
-6. **Generate emission spectra**
+6. **Generates emission spectra**
 
    * **Isotopes:** spectra from `paceENSDF` (IAEA ENSDF data).
    * **X-ray tubes:** spectra from `SpekPy`.
    * **Natural background:** modeled as a simple decaying exponential.
 
-7. **Compute equivalent effective dose** for each source.
+7. **Computes equivalent effective dose** for each source.
 
 ### Supported radiation sources
 
@@ -135,4 +134,4 @@ You will need:
 
 ## Acknowledgements
 
-* Special thanks to **BikingBoffin** from [/r/radiation](https://www.reddit.com/r/Radiation) for inspiring this project.
+* Special thanks to **BikingBoffin** from [/r/radiation](https://www.reddit.com/r/Radiation/comments/1hdifrz/geiger_tube_efficiency_and_dose_rate/) for inspiring this project.

@@ -1,5 +1,5 @@
 [Environment]
-sphere = 200
+sphere = 20
 
 [Environment.Source]
 box = [10.8, 0.1, 1.0]
@@ -16,7 +16,7 @@ material = "G4_STAINLESS-STEEL"
 [Environment.Detector.Body.EffectiveVolume]
 cylinder = { length = 6.99, radius = 0.495 }
 material = "FillGas"
-role = "record_deposits"
+role = [ "record_ingoing", "record_deposits" ]
 
 [Environment.Detector.Body.EffectiveVolume.Anode]
 cylinder = { length = 6.595, radius = 0.075 }
