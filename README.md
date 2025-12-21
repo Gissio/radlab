@@ -21,12 +21,12 @@ With Rad Lab, you can:
 
 Explore the included notebooks:
 
-* [J305 Geiger tube](tubes/j305/j305.ipynb)
-* [M4011 Geiger tube](tubes/m4011/m4011.ipynb)
-* [HH614 Geiger tube](tubes/hh614/hh614.ipynb)
-* [СБМ20 (SBM20) Geiger tube](tubes/sbm20/sbm20.ipynb)
-* [СИЗБГ (SI3BG) Geiger tube](tubes/si3bg/si3bg.ipynb)
-* [LND 7317 Geiger tube](tubes/lnd7317/lnd7317.ipynb)
+* [J305 Geiger tube](simulations/j305/j305.ipynb)
+* [M4011 Geiger tube](simulations/m4011/m4011.ipynb)
+* [HH614 Geiger tube](simulations/hh614/hh614.ipynb)
+* [СБМ20 (SBM20) Geiger tube](simulations/sbm20/sbm20.ipynb)
+* [СИЗБГ (SI3BG) Geiger tube](simulations/si3bg/si3bg.ipynb)
+* [LND 7317 Geiger tube](simulations/lnd7317/lnd7317.ipynb)
 
 ## Installation
 
