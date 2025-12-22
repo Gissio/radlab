@@ -7,12 +7,12 @@
 
 ## Overview
 
-**Rad Lab** is a Monte-Carlo simulation toolkit for modeling the performance of **Geiger–Müller tubes**. Built on top of Geant4 and Calzone, it provides an easy-to-use, reproducible, and extensible environment for detector simulation and design.
+**Rad Lab** is a Monte-Carlo simulation toolkit for modeling the performance of **Geiger–Müller tubes**. Built on top of Calzone/Gean4, it provides an easy-to-use, reproducible, and extensible environment for detector simulation and design.
 
 With Rad Lab, you can:
 
 * Compute **detector efficiency** (detected particles per incident particle).
-* Determine **absorbed** and **effective dose** responses (cpm per µSv/h) using [ICRP 74](https://www.icrp.org/publication.asp?id=icrp%20publication%2074) and [ICRP 116](https://www.icrp.org/publication.asp?id=icrp%20publication%20116).
+* Determine **dose sensitivity** (cpm per µSv/h) using [ICRP 74](https://www.icrp.org/publication.asp?id=icrp%20publication%2074).
 * Explore the **directional response** of detectors.
 * Obtain correct sensitivities for various **radiation sources**.
 * Prototype and evaluate **measurement geometries**.
@@ -92,7 +92,7 @@ Rad Lab performs the following steps:
 
 5. **Computes dose sensitivity**
 
-   * **Ambient dose equivalent:** based on ICRP 74.
+   * **Ambient dose equivalent:** using ICRP 74.
 
 6. **Generates emission spectra**
 
