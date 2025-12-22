@@ -90,10 +90,9 @@ Rad Lab performs the following steps:
 
    Efficiency = detected electrons / incident particles.
 
-5. **Computes dose sensitivities**
+5. **Computes dose sensitivity**
 
-   * **Absorbed dose:** using ICRP 74 air-kerma–to-dose data.
-   * **Effective dose:** using the ICRP 116 AP (anterior–posterior) geometry.
+   * **Ambient dose equivalent:** based on ICRP 74.
 
 6. **Generates emission spectra**
 
