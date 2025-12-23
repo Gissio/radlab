@@ -27,6 +27,7 @@ Explore the included notebooks:
 * [СБМ20 (SBM20) Geiger tube](simulations/sbm20/sbm20.ipynb)
 * [СИЗБГ (SI3BG) Geiger tube](simulations/si3bg/si3bg.ipynb)
 * [LND 7317 Geiger tube](simulations/lnd7317/lnd7317.ipynb)
+* [Evaluated gamma spectra](tools/build-spectra.ipynb)
 
 ## Installation
 
