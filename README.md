@@ -19,17 +19,17 @@ With Rad Lab, you can:
 * Obtain correct sensitivities for various **radiation sources**.
 * Prototype and evaluate **measurement geometries**.
 
-## Examples
+## Simulations
 
 Explore the included notebooks:
 
+* [Simulated gamma spectra](tools/build-spectra.ipynb)
 * [J305 Geiger tube](simulations/j305/j305.ipynb)
 * [M4011 Geiger tube](simulations/m4011/m4011.ipynb)
 * [HH614 Geiger tube](simulations/hh614/hh614.ipynb)
 * [СБМ20 (SBM20) Geiger tube](simulations/sbm20/sbm20.ipynb)
 * [СИЗБГ (SI3BG) Geiger tube](simulations/si3bg/si3bg.ipynb)
 * [LND 7317 Geiger tube](simulations/lnd7317/lnd7317.ipynb)
-* [Evaluated gamma spectra](tools/build-spectra.ipynb)
 
 ## Installation
 
