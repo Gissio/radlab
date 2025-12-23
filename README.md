@@ -9,7 +9,7 @@
 
 ## Overview
 
-**Rad Lab** is a Monte-Carlo simulation toolkit for modeling the performance of **Geiger–Müller tubes**. Built on top of Calzone/Gean4, it provides an easy-to-use, reproducible, and extensible environment for detector simulation and design.
+**Rad Lab** is a Monte-Carlo simulation toolkit for modeling the performance of **Geiger–Müller tubes**. Built on top of Calzone/Geant4, it provides an easy-to-use, reproducible, and extensible environment for detector simulation and design.
 
 With Rad Lab, you can:
 
