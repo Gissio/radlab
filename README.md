@@ -1,3 +1,5 @@
+![Header](simulations/sbm20/data/geometry.png)
+
 # Rad Lab
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
