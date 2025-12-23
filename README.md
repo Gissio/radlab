@@ -16,7 +16,7 @@ With Rad Lab, you can:
 * Compute **detector efficiency** (detected particles per incident particle).
 * Determine **dose sensitivity** (cpm per µSv/h) using [ICRP 74](https://www.icrp.org/publication.asp?id=icrp%20publication%2074).
 * Explore the **directional response** of detectors.
-* Obtain correct sensitivities for various **radiation sources**.
+* Obtain correct *+sensitivities** for various radiation sources.
 * Prototype and evaluate **measurement geometries**.
 
 ## Simulations
