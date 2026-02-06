@@ -11,7 +11,7 @@ rotation = [ 0, 90, 0 ]
 
 [Environment.Detector.Body]
 cylinder = { length = 7, radius = 0.5 }
-material = "G4_STAINLESS-STEEL"
+material = "StainlessSteel"
 
 [Environment.Detector.Body.EffectiveVolume]
 cylinder = { length = 6.99, radius = 0.495 }
@@ -21,7 +21,7 @@ role = [ "record_ingoing", "record_deposits" ]
 [Environment.Detector.Body.EffectiveVolume.Anode]
 cylinder = { length = 6.595, radius = 0.075 }
 position = [ 0, 0, -0.1975 ]
-material = "G4_STAINLESS-STEEL"
+material = "StainlessSteel"
 
 [Environment.Detector.CapLeft]
 cylinder = { length = 1.05, radius = 0.5 }
@@ -30,7 +30,7 @@ material = "Bakelite"
 
 [Environment.Detector.CapLeft.Anode]
 cylinder = { length = 1.05, radius = 0.075 }
-material = "G4_STAINLESS-STEEL"
+material = "StainlessSteel"
 
 [Environment.Detector.CapRight]
 cylinder = { length = 1.05, radius = 0.5 }
@@ -47,10 +47,17 @@ cylinder = { length = 0.85, radius = 0.32 }
 position = [ 0, 0, 4.975 ]
 material = "Bakelite"
 
+
+
 [materials.mixtures.FillGas]
 density = 0.224e-3
 composition = { G4_Ne = 0.993, G4_Ar = 0.005, G4_Br = 0.002 }
 state = "gas"
+
+[materials.mixtures.StainlessSteel]
+density = 8.0
+composition = { G4_Fe = 0.70, G4_Cr = 0.20, G4_Ni = 0.10 }
+state = "solid"
 
 [materials.mixtures.Bakelite]
 density = 1.3

@@ -19,10 +19,11 @@ from IPython.display import display, Markdown
 # Constants
 
 enable_detailed_deposits = True
+enable_log = False
 
 # Simulations
 
-def simulate_gm_tube(path, energy, n, pid="gamma", angle=0):
+def simulate_gm_tube(path, energy, chunk_size, pid="gamma", angle=0):
     distance = 10
     position = [distance * math.sin(angle * math.pi / 180),
                 -distance * math.cos(angle * math.pi / 180),
@@ -36,7 +37,11 @@ def simulate_gm_tube(path, energy, n, pid="gamma", angle=0):
         .modify("Environment.Source", position=position, rotation=rotation) \
         .build()
 
-    simulation = calzone.Simulation(geometry=geometry)
+    physics = calzone.Physics()
+    # physics = calzone.Physics(em_model="livermore")
+    # physics = calzone.Physics(em_model="livermore", default_cut=0.00001)
+
+    simulation = calzone.Simulation(geometry=geometry, physics=physics)
     if (enable_detailed_deposits):
         simulation.sample_deposits = "detailed"
 
@@ -46,7 +51,7 @@ def simulate_gm_tube(path, energy, n, pid="gamma", angle=0):
         .energy(energy / 1000)          \
         .inside(source)                 \
         .direction(direction)           \
-        .generate(n)
+        .generate(chunk_size)
 
     result = simulation.run(particles)
 
@@ -58,32 +63,33 @@ def simulate_gm_tube(path, energy, n, pid="gamma", angle=0):
         for deposit in deposits:
             events.add(deposit["event"])
     # Count ingoing electrons
-    # for (layer, particles) in result.particles.items():
-    #     for particle in particles:
-    #         if particle["pid"] == 11:
-    #             events.add(particle["event"])
+    for (layer, particles) in result.particles.items():
+        for particle in particles:
+            if particle["pid"] == 11:
+                events.add(particle["event"])
 
     # Log
-    # with open('out.log', 'wt') as f:
-    #     print('---', file=f)
+    if enable_log:
+        with open('out.log', 'wt') as f:
+            print('---', file=f)
 
-    #     if enable_detailed_deposits:
-    #         print('event, tid, pid, energy, value, start, end, weight, random_index', file=f)
-    #     else:
-    #         print('event, value, weight, random_index', file=f)
-    #     for (layer, deposits) in result.deposits.items():
-    #         if enable_detailed_deposits:
-    #             deposits = deposits.line
+            if enable_detailed_deposits:
+                print('event, tid, pid, energy, value, start, end, weight, random_index', file=f)
+            else:
+                print('event, value, weight, random_index', file=f)
+            for (layer, deposits) in result.deposits.items():
+                if enable_detailed_deposits:
+                    deposits = deposits.line
 
-    #         for deposit in deposits:
-    #             print(deposit, file=f)
-    #     print('event, pid, energy, position, direction, weight, random_index, tid', file=f)
-    #     for (layer, particles) in result.particles.items():
-    #         for particle in particles:
-    #             if particle["pid"] != 22:
-    #                 print(particle, file=f)
+                for deposit in deposits:
+                    print(deposit, file=f)
+            print('event, pid, energy, position, direction, weight, random_index, tid', file=f)
+            for (layer, particles) in result.particles.items():
+                for particle in particles:
+                    if particle["pid"] != 22:
+                        print(particle, file=f)
 
-    #     print()
+            print()
 
     return (energy, angle, len(events))
 
@@ -118,7 +124,7 @@ def simulate_gm_energies(path, n_montecarlo, pid="gamma"):
         for energy in energies:
             for i in range(chunk_num):
                 futures.append(executor.submit(simulate_gm_tube,
-                               path, energy, chunk_size))
+                               path, energy, chunk_size, pid=pid))
 
         for future in futures:
             energy, angle, m = future.result()

@@ -11,7 +11,7 @@ rotation = [ 0, 90, 0 ]
 
 [Environment.Detector.Body]
 cylinder = { length = 4.5, radius = 0.5 }
-material = "G4_Pyrex_Glass"
+material = "BorosilicateGlass"
 
 [Environment.Detector.Body.Gas]
 cylinder = { length = 4.4, radius = 0.45 }
@@ -19,7 +19,7 @@ material = "FillGas"
 
 [Environment.Detector.Body.Gas.Cathode]
 cylinder = { length = 0.8, radius = 0.15 }
-material = "G4_STAINLESS-STEEL"
+material = "StainlessSteel"
 
 [Environment.Detector.Body.Gas.Cathode.EffectiveVolume]
 cylinder = { length = 0.8, radius = 0.1 }
@@ -28,19 +28,31 @@ role = [ "record_ingoing", "record_deposits" ]
 
 [Environment.Detector.Body.Gas.Cathode.EffectiveVolume.Anode]
 cylinder = { length = 0.8, radius = 0.025 }
-material = "G4_STAINLESS-STEEL"
+material = "StainlessSteel"
 
 [Environment.Detector.LeftCap]
 cylinder = { length = 0.75, radius = 0.325 }
 position = [ 0, 0, -2.625 ]
-material = "G4_Pyrex_Glass"
+material = "BorosilicateGlass"
 
 [Environment.Detector.RightCap]
 cylinder = { length = 0.75, radius = 0.325 }
 position = [ 0, 0, 2.625 ]
-material = "G4_Pyrex_Glass"
+material = "BorosilicateGlass"
+
+
+
+[materials.mixtures.BorosilicateGlass]
+density = 2.25
+composition = { G4_O = 0.52, G4_Si = 0.37, G4_B = 0.06, G4_Na = 0.03, G4_Al = 0.02 }
+state = "solid"
 
 [materials.mixtures.FillGas]
 density = 0.224e-3
 composition = { G4_Ne = 0.993, G4_Ar = 0.005, G4_Br = 0.002 }
 state = "gas"
+
+[materials.mixtures.StainlessSteel]
+density = 8.0
+composition = { G4_Fe = 0.70, G4_Cr = 0.20, G4_Ni = 0.10 }
+state = "solid"

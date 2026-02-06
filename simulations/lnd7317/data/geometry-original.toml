@@ -11,9 +11,14 @@ position = [ 0, 0, 0 ]
 rotation = [ 90, 0, 0 ]
 material = "StainlessSteel"
 
+[Environment.Detector.Window]
+cylinder = { length = 0.001, radius = 2.225 }
+position = [ 0, 0, 0.7745 ]
+material = "Mica"
+
 [Environment.Detector.EffectiveVolume]
-cylinder = { length = 1.26, radius = 2.225 }
-position = [ 0, 0, 0.14 ]
+cylinder = { length = 1.269, radius = 2.225 }
+position = [ 0, 0, 0.1395 ]
 material = "FillGas"
 role = [ "record_ingoing", "record_deposits" ]
 
