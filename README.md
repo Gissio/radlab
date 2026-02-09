@@ -101,7 +101,7 @@ Rad Lab performs the following steps:
 
    * **Isotopes:** spectra from `paceENSDF` (IAEA ENSDF data).
    * **X-ray tubes:** spectra from `SpekPy`.
-   * **Natural background:** modeled as a simple decaying exponential.
+   * **Natural background:** modeled using data from Thakur (2022, Radiopurity studies of a rock sample from the Aut region).
 
 7. **Computes equivalent effective dose** for each source.
 
@@ -124,7 +124,7 @@ Rad Lab performs the following steps:
 | K-40               | γ     | 1461 keV               |
 | Natural background | Mixed | Typical environmental  |
 
-## Adding new radioactive sources
+## Adding radioactive sources
 
 To generate or update gamma spectra, run the notebook:
 [build-spectra.ipynb](tools/build-spectra.ipynb)
