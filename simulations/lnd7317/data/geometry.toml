@@ -2,17 +2,22 @@
 sphere = 20
 
 [Environment.Source]
-box = [8.36, 0.1, 8.36]
+box = [5.36, 0.1, 5.36]
 position = [0, -10, 0]
 
 [Environment.Detector]
-cylinder = { length = 1.55, radius = 2.68 }
+cylinder = { length = 1.56, radius = 2.68 }
 position = [ 0, 0, 0 ]
 rotation = [ 90, 0, 0 ]
 material = "StainlessSteel"
 
+[Environment.Detector.Window]
+cylinder = { length = 0.001, radius = 2.68 }
+position = [ 0, 0, 0.7755 ]
+material = "Mica"
+
 [Environment.Detector.EffectiveVolume]
-cylinder = { length = 1.26, radius = 2.225 }
+cylinder = { length = 1.27, radius = 2.225 }
 position = [ 0, 0, 0.14 ]
 material = "FillGas"
 role = [ "record_ingoing", "record_deposits" ]

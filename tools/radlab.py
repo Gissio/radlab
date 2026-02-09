@@ -105,7 +105,7 @@ def get_source_area(path):
     source = simulation.geometry.find("Source")
     aabb = source.aabb()
 
-    return aabb[1][0] - aabb[0][0] * (aabb[1][2] - aabb[0][2])
+    return (aabb[1][0] - aabb[0][0]) * (aabb[1][2] - aabb[0][2])
 
 
 def simulate_gm_energies(path, n_montecarlo, pid="gamma"):
