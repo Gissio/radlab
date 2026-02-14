@@ -14,7 +14,7 @@ cylinder = { length = 8.9, radius = 0.5 }
 material = "BorosilicateGlass"
 
 [Environment.Detector.Body.Cathode]
-cylinder = { length = 8.9, radius = 0.45 }
+cylinder = { length = 8.8, radius = 0.45 }
 material = "TinOxide"
 
 [Environment.Detector.Body.Cathode.Gas]
